@@ -1,0 +1,25 @@
+{
+  "name": "driven_recharge",
+  "version": "1.0.0",
+  "description": "api for cellphone recharge",
+  "license": "ISC",
+  "author": "ALR",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc src/index.ts",
+    "start": "node src/index.js",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "dependencies": {
+    "@types/pg": "^8.11.11",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "pg": "^8.14.1",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "ts-node-dev": "^2.0.0"
+  }
+}
