@@ -1,27 +1,21 @@
-export function conflictError(entity){
-    return{
-        type:"conflict",
-        message:`${entity} já existe!`
-    }
-}
+import { NextFunction, Request, Response } from "express";
+import { Error } from "../protocols/types"
 
-export function notFound(entity){
-    return{
-        type:"notFound",
-        message:`${entity} não existe!`
-    }
-}
+export default function errorHandler(error: Error, req: Request, res: Response, next: NextFunction){
+    console.log(error);
 
-export function UnprocessableEntity(){
-    return{
-        type:"UnprocessableEntity",
-        message:"não é possível processar!"
+    if(error.type === "conflict"){
+      return res.status(409).send(error.message)
     }
-}
+    if(error.type === "notFound"){
+        return res.status(404).send(error.message)
+    }
+    if(error.type === "UnprocessableEntity"){
+        return res.status(422).send(error.message)
+    }
+    if(error.type === "badRequest"){
+        return res.status(400).send(error.message)
+    }
 
-export function badRequest(){
-    return{
-        type: "badRequest",
-        //message: ""
-    }
+    res.status(500).send(error.message)
 }
