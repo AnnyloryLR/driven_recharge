@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Phone } from "../protocols/types";
-import { createPhone } from "../services/phones-service";
+import { createPhone, getByCpf } from "../services/phones-service";
 import httpStatus from 'http-status';
 
 
@@ -9,4 +9,12 @@ export async function createNewPhone( req: Request, res: Response){
     await createPhone(phoneData);
 
     res.sendStatus(httpStatus.CREATED)
+}
+
+export async function getPhoneByCpf( req: Request, res: Response){
+    const {document} = req.params;
+    
+    const result = await getByCpf(document);
+
+    res.status(200).send(result);
 }
