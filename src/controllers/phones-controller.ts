@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Phone } from "protocols/types";
-import { createPhone } from "services/phones-service";
+import { Phone } from "../protocols/types";
+import { createPhone } from "../services/phones-service";
 import httpStatus from 'http-status';
 
 

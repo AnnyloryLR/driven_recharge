@@ -1,6 +1,7 @@
 import express, { Request, Response, json } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import phonesRouter from './routers/phones-router';
 
 dotenv.config();
 
@@ -12,6 +13,8 @@ app.use(json());
 app.get("/health", (req: Request, res: Response) => {
     res.sendStatus(200);    
 });
+
+app.use(phonesRouter)
 
 const port = process.env.PORT || 5000;
 
