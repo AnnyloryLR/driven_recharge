@@ -26,3 +26,8 @@ export type Recharge = {
     phone_id:number,
     recharge:number
 }
+
+export type RechargeData = {
+    phone:string,
+    recharge:number
+}
