@@ -5,9 +5,9 @@ import httpStatus from 'http-status';
 
 
 export async function newRecharge(req: Request, res:Response){
-    const {recharge, phone} = req.body as RechargeData;
+    const rechargeData = req.body as RechargeData;
 
-    await createRecharge(recharge, phone);
+    await createRecharge(rechargeData);
 
     res.sendStatus(httpStatus.CREATED)
 }
