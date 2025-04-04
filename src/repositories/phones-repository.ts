@@ -1,5 +1,5 @@
-import { Phone, Phones } from "../protocols/types";
 import db from "../config/database";
+import { Phone, Phones } from "../protocols/types";
 
 export async function insertPhone( phone: Phone) {
     const { phoneNumber, carrier, name, cpf, description } = phone;

@@ -17,3 +17,12 @@ export type Phone = {
     cpf: string,
     description:string,
 };
+
+export type Id = {
+    id:number
+}
+
+export type Recharge = {
+    phone_id:number,
+    recharge:number
+}
