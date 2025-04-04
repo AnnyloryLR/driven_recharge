@@ -1,4 +1,4 @@
-import joi from "joi";
+import joi from 'joi';
 import { Phone } from "../protocols/types";
 
 export const phoneSchema = joi.object<Phone>({

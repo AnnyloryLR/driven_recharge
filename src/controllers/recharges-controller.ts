@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
-import { Recharge, RechargeData } from 'protocols/types';
-import { createRecharge } from 'services/recharges-service';
+import { RechargeData } from '../protocols/types';
+import { createRecharge } from '../services/recharges-service';
 import httpStatus from 'http-status';
 
 

@@ -11,10 +11,10 @@ export async function getPhoneId(phone:string){
 }
 
 export async function rechargePhone(recharge:number, phone:string){
-    const phoneId = getPhoneId(phone);
+    const phone_id = getPhoneId(phone);
 
     const result = await db.query<Recharge>(
         `INSERT INTO recharges (phone_id, recharge)
-         VALUES ($1,$2);`, [phoneId, recharge]
+         VALUES ($1,$2);`, [phone_id, recharge]
     );
 }
