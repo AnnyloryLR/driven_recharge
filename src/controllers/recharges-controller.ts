@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { RechargeData } from '../protocols/types';
-import { createRecharge } from '../services/recharges-service';
+import { createRecharge, getPhoneRecharges } from '../services/recharges-service';
 import httpStatus from 'http-status';
 
 
@@ -10,4 +10,12 @@ export async function newRecharge(req: Request, res:Response){
     await createRecharge(rechargeData);
 
     res.sendStatus(httpStatus.CREATED)
+}
+
+export async function getRecharges(req: Request, res:Response){
+    const {number} = req.params;
+
+    const result = await getPhoneRecharges(number);
+
+    res.send(result);
 }

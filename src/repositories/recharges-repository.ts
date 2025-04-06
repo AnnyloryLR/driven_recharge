@@ -21,3 +21,12 @@ export async function rechargePhone(rechargeData:RechargeData){
 
     return result;
 }
+
+export async function getRecharges(number:string){
+    const phone_id = await getPhoneId(number)
+
+    const result =  await db.query(`
+        SELECT recharge FROM recharges WHERE phone_id = $1;`, [phone_id]);
+
+    return result.rows;
+}
