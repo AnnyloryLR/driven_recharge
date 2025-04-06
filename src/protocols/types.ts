@@ -15,7 +15,7 @@ export type Phone = {
     carrier: string,
     name: string,
     cpf: string,
-    description:string,
+    description:string
 };
 
 export type Id = {
