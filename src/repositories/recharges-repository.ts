@@ -25,7 +25,9 @@ export async function rechargePhone(rechargeData:RechargeData){
 }
 
 export async function getRecharges(number:string){
-    const phone_id = await getPhoneId(number)
+    const phoneId = await getPhoneId(number)
+
+    const phone_id = phoneId.rows[0].id;
 
     const result =  await db.query(`
         SELECT recharge FROM recharges WHERE phone_id = $1;`, [phone_id]);

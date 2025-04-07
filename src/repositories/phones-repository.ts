@@ -34,8 +34,10 @@ export async function insertPhone( phone: Phone) {
 
 export async function getPhone(document:string){
     const result = await db.query(
-        `SELECT * FROM phones WHERE cpf=$1`,[document]);
+        `SELECT phone_number FROM phones WHERE cpf=$1`,[document]);
 
-   return result.rows;
+  const phones = result.rows.map(e => e.phone_number);
+
+  return phones
 }
 
