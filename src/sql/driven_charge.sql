@@ -14,7 +14,7 @@ INSERT INTO carriers (name, code) VALUES ('Claro', 21);
 CREATE TABLE phones (
   id SERIAL PRIMARY KEY,
    cpf TEXT NOT NULL,
-  phone_number TEXT NOT NULL,
+  phone_number TEXT NOT NULL UNIQUE,
   carrier TEXT NOT NULL,
   name VARCHAR(255) NOT NULL,
   carrier_id INTEGER NOT NULL,

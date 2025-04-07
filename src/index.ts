@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import phonesRouter from './routers/phones-router';
 import rechargesRouter from './routers/recharges-router';
+import summaryRouter from './routers/summary-router';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.get("/health", (req: Request, res: Response) => {
 
 app.use(phonesRouter);
 app.use(rechargesRouter);
+app.use(summaryRouter)
 
 const port = process.env.PORT || 5000;
 
