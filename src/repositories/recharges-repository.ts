@@ -7,12 +7,14 @@ export async function getPhoneId(phone:string){
         `SELECT id FROM phones WHERE phone_number = $1;`, [phone]
     );
 
-    return result.rows[0].id;
+    return result;
 }
 
 export async function rechargePhone(rechargeData:RechargeData){
     const {recharge, phone} = rechargeData;
-    const phone_id = await getPhoneId(phone);
+    const phoneId = await getPhoneId(phone);
+
+    const phone_id = phoneId.rows[0].id;
 
     const result = await db.query<Recharge>(
         `INSERT INTO recharges (phone_id, recharge)

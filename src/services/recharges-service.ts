@@ -1,7 +1,13 @@
 import { RechargeData } from "protocols/types";
-import { getRecharges, rechargePhone } from "../repositories/recharges-repository";
+import { getPhoneId, getRecharges, rechargePhone } from "../repositories/recharges-repository";
+import { notFound } from "../errors/errors";
 
 export async function createRecharge(rechargeData: RechargeData){
+    const { phone } = rechargeData;
+    
+    const exist = await getPhoneId(phone);
+
+    if(exist.rowCount === 0){throw notFound(phone)}
     const newRecharge = await rechargePhone(rechargeData);
 
     return newRecharge;

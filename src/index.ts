@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import phonesRouter from './routers/phones-router';
 import rechargesRouter from './routers/recharges-router';
 import summaryRouter from './routers/summary-router';
+import errorHandler from './middlewares/errorHandler-middleware';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get("/health", (req: Request, res: Response) => {
 app.use(phonesRouter);
 app.use(rechargesRouter);
 app.use(summaryRouter)
+app.use(errorHandler)
 
 const port = process.env.PORT || 5000;
 

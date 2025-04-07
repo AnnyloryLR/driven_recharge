@@ -1,41 +1,27 @@
-import {Error} from "../protocols/types"
-
-
-export function conflictError(entity: string){
-    const error: Error = {
+export function conflictError(entity:string){
+    return{
         type:"conflict",
-        message:`${entity} já existe!`
-    };
-
-    return error;      
+        message:`${entity} já está cadastrado!`
+    }
 }
 
-export function notFound(entity: string){
-    const error: Error = {
+export function notFound(entity:string){
+    return{
         type:"notFound",
         message:`${entity} não existe!`
     }
-
-    return error;
 }
 
 export function UnprocessableEntity(){
-    const error: Error = {
+    return{
         type:"UnprocessableEntity",
         message:"não é possível processar!"
-
-    } 
-
-    return error;
+    }
 }
 
 export function badRequest(){
-    const error: Error = {
+    return{
         type: "badRequest",
-        message: "essa solicitação não poderá ser atendida"
-
+        message: "esta operação não pode ser realizada sem a data de devolução!"
     }
-
-    return error;
-    
 }
