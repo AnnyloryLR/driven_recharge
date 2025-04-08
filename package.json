@@ -6,9 +6,9 @@
   "author": "ALR",
   "main": "index.js",
   "scripts": {
-    "build": "tsc src/index.ts",
+    "build": "tsc",
     "start": "node src/index.js",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "nodemon index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -16,13 +16,14 @@
     "express": "^5.1.0",
     "http-status": "^2.1.0",
     "joi": "^17.13.3",
-    "pg": "^8.14.1",
-    "typescript": "^5.8.2"
+    "pg": "^8.14.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/pg": "^8.11.11",
-    "ts-node-dev": "^2.0.0"
+    "nodemon": "^3.1.9",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
   }
 }

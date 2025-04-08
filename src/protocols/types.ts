@@ -10,13 +10,7 @@ export type Phones = {
     cpf: string,
     description:string,
 };
-export type Phone = {
-    phoneNumber:string,
-    carrier: string,
-    name: string,
-    cpf: string,
-    description:string
-};
+export type Phone = Omit<Phones, "id">;
 
 export type Id = {
     id:number
