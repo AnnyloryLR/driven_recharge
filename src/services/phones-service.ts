@@ -1,6 +1,6 @@
 import { Phone } from "protocols/types";
 import { getPhone, insertPhone, phoneLimit, sameNumber } from "../repositories/phones-repository";
-import { conflictError } from "../errors/errors";
+import { conflictError, conflictError2 } from "../errors/errors";
 
 
 export async function createPhone(phone: Phone){
@@ -12,7 +12,7 @@ export async function createPhone(phone: Phone){
 
     if(same.rowCount > 0){throw conflictError(phoneNumber)}; 
 
-    if(limit.rowCount === 3){ throw conflictError(cpf)};
+    if(limit.rowCount === 3){ throw conflictError2()};
    
     const newPhone = await insertPhone(phone);   
     

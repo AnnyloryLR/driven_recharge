@@ -1,14 +1,23 @@
 {
   "name": "driven_recharge",
   "version": "1.0.0",
-  "description": "api for cellphone recharge",
+  "description": "",
+  "homepage": "https://github.com/AnnyloryLR/driven_recharge#readme",
+  "bugs": {
+    "url": "https://github.com/AnnyloryLR/driven_recharge/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnyloryLR/driven_recharge.git"
+  },
   "license": "ISC",
-  "author": "ALR",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node src/index.js",
-    "dev": "ts-node-dev index.ts"
+    "build": "",
+    "start": "node ./dist/index.js",
+    "dev":"ts-node-dev ./src/index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,7 +31,6 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/pg": "^8.11.11",
-    "nodemon": "^3.1.9",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }

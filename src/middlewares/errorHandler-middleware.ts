@@ -8,6 +8,10 @@ export default function errorHandler(error:Error, req: Request, res: Response, n
         res.status(409).send(error.message)
         return
     }
+    if(error.type === "conflict2"){
+        res.status(409).send(error.message)
+        return
+    }
     if(error.type === "notFound"){
         res.status(404).send(error.message)
         return    
