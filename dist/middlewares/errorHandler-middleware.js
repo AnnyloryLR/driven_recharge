@@ -1,7 +1,6 @@
 "use strict";
 exports.__esModule = true;
 function errorHandler(error, req, res, next) {
-    console.log(error);
     if (error.type === "conflict") {
         res.status(409).send(error.message);
         return;

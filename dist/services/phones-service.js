@@ -41,23 +41,23 @@ var phones_repository_1 = require("../repositories/phones-repository");
 var errors_1 = require("../errors/errors");
 function createPhone(phone) {
     return __awaiter(this, void 0, void 0, function () {
-        var cpf, phoneNumber, same, limit, newPhone;
+        var cpf, phone_number, same, limit, newPhone;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     cpf = phone.cpf;
-                    phoneNumber = phone.phoneNumber;
-                    return [4 /*yield*/, (0, phones_repository_1.sameNumber)(phoneNumber)];
+                    phone_number = phone.phone_number;
+                    return [4 /*yield*/, (0, phones_repository_1.sameNumber)(phone_number)];
                 case 1:
                     same = _a.sent();
                     return [4 /*yield*/, (0, phones_repository_1.phoneLimit)(cpf)];
                 case 2:
                     limit = _a.sent();
                     if (same.rowCount > 0) {
-                        throw (0, errors_1.conflictError)(phoneNumber);
+                        throw (0, errors_1.conflictError)(phone_number);
                     }
                     ;
-                    if (limit.rowCount === 3) {
+                    if (limit.rowCount >= 3) {
                         throw (0, errors_1.conflictError2)();
                     }
                     ;

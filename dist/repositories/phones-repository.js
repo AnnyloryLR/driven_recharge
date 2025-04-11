@@ -55,12 +55,12 @@ function phoneLimit(cpf) {
     });
 }
 exports.phoneLimit = phoneLimit;
-function sameNumber(phoneNumber) {
+function sameNumber(phone_number) {
     return __awaiter(this, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, database_1["default"].query("\n        SELECT id FROM phones WHERE phone_number=$1;", [phoneNumber])];
+                case 0: return [4 /*yield*/, database_1["default"].query("\n        SELECT id FROM phones WHERE phone_number=$1;", [phone_number])];
                 case 1:
                     result = _a.sent();
                     return [2 /*return*/, result];
@@ -71,16 +71,20 @@ function sameNumber(phoneNumber) {
 exports.sameNumber = sameNumber;
 function insertPhone(phone) {
     return __awaiter(this, void 0, void 0, function () {
-        var phoneNumber, carrier, name, cpf, description, carrierId, carrier_id;
+        var phone_number, carrier, name, cpf, description, carrierId, carrier_id, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    phoneNumber = phone.phoneNumber, carrier = phone.carrier, name = phone.name, cpf = phone.cpf, description = phone.description;
+                    phone_number = phone.phone_number, carrier = phone.carrier, name = phone.name, cpf = phone.cpf, description = phone.description;
                     return [4 /*yield*/, database_1["default"].query("\n        SELECT id FROM carriers WHERE name = $1;", [carrier])];
                 case 1:
                     carrierId = _a.sent();
                     carrier_id = carrierId.rows[0].id;
-                    return [2 /*return*/];
+                    return [4 /*yield*/, database_1["default"].query("INSERT INTO phones (phone_number, carrier, name, cpf, description, carrier_id)\n         VALUES ($1, $2, $3, $4, $5, $6)", [phone_number, carrier, name, cpf,
+                            description, carrier_id])];
+                case 2:
+                    result = _a.sent();
+                    return [2 /*return*/, result];
             }
         });
     });
