@@ -1,5 +1,6 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = errorHandler;
 function errorHandler(error, req, res, next) {
     if (error.type === "conflict") {
         res.status(409).send(error.message);
@@ -23,4 +24,3 @@ function errorHandler(error, req, res, next) {
     }
     res.status(500).send(error.message);
 }
-exports["default"] = errorHandler;

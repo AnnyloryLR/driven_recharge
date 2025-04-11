@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -38,23 +38,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.__esModule = true;
-exports.getSummary = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getSummary = getSummary;
 var database_1 = __importDefault(require("../config/database"));
 function getSummary(cpf) {
     return __awaiter(this, void 0, void 0, function () {
         var result1, carrier_name, result2, id, result3, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, database_1["default"].query("\n        SELECT * FROM phones WHERE cpf= $1;", [cpf])];
+                case 0: return [4 /*yield*/, database_1.default.query("\n        SELECT * FROM phones WHERE cpf= $1;", [cpf])];
                 case 1:
                     result1 = _a.sent();
                     carrier_name = result1.rows[0].carrier;
-                    return [4 /*yield*/, database_1["default"].query("\n        SELECT * FROM carriers WHERE name= $1;", [carrier_name])];
+                    return [4 /*yield*/, database_1.default.query("\n        SELECT * FROM carriers WHERE name= $1;", [carrier_name])];
                 case 2:
                     result2 = _a.sent();
                     id = result1.rows[0].id;
-                    return [4 /*yield*/, database_1["default"].query("\n        SELECT * FROM recharges WHERE phone_id= $1;", [id])];
+                    return [4 /*yield*/, database_1.default.query("\n        SELECT * FROM recharges WHERE phone_id= $1;", [id])];
                 case 3:
                     result3 = _a.sent();
                     result = {
@@ -68,4 +68,3 @@ function getSummary(cpf) {
         });
     });
 }
-exports.getSummary = getSummary;

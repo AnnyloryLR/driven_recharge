@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var schema_middleware_1 = require("../middlewares/schema-middleware");
 var recharges_schema_1 = require("../schemas/recharges-schema");
@@ -7,4 +7,4 @@ var recharges_controller_1 = require("../controllers/recharges-controller");
 var rechargesRouter = (0, express_1.Router)();
 rechargesRouter.post("/recharges", (0, schema_middleware_1.schemaValidate)(recharges_schema_1.rechargeDataSchema), recharges_controller_1.newRecharge);
 rechargesRouter.get("/recharges/:number", recharges_controller_1.getRecharges);
-exports["default"] = rechargesRouter;
+exports.default = rechargesRouter;

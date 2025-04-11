@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -38,15 +38,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.__esModule = true;
-exports.getPhone = exports.insertPhone = exports.sameNumber = exports.phoneLimit = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.phoneLimit = phoneLimit;
+exports.sameNumber = sameNumber;
+exports.insertPhone = insertPhone;
+exports.getPhone = getPhone;
 var database_1 = __importDefault(require("../config/database"));
 function phoneLimit(cpf) {
     return __awaiter(this, void 0, void 0, function () {
         var limit;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, database_1["default"].query("\n        SELECT phone_number FROM phones WHERE cpf = $1;", [cpf])];
+                case 0: return [4 /*yield*/, database_1.default.query("\n        SELECT phone_number FROM phones WHERE cpf = $1;", [cpf])];
                 case 1:
                     limit = _a.sent();
                     return [2 /*return*/, limit];
@@ -54,13 +57,12 @@ function phoneLimit(cpf) {
         });
     });
 }
-exports.phoneLimit = phoneLimit;
 function sameNumber(phone_number) {
     return __awaiter(this, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, database_1["default"].query("\n        SELECT id FROM phones WHERE phone_number=$1;", [phone_number])];
+                case 0: return [4 /*yield*/, database_1.default.query("\n        SELECT id FROM phones WHERE phone_number=$1;", [phone_number])];
                 case 1:
                     result = _a.sent();
                     return [2 /*return*/, result];
@@ -68,7 +70,6 @@ function sameNumber(phone_number) {
         });
     });
 }
-exports.sameNumber = sameNumber;
 function insertPhone(phone) {
     return __awaiter(this, void 0, void 0, function () {
         var phone_number, carrier, name, cpf, description, carrierId, carrier_id, result;
@@ -76,11 +77,11 @@ function insertPhone(phone) {
             switch (_a.label) {
                 case 0:
                     phone_number = phone.phone_number, carrier = phone.carrier, name = phone.name, cpf = phone.cpf, description = phone.description;
-                    return [4 /*yield*/, database_1["default"].query("\n        SELECT id FROM carriers WHERE name = $1;", [carrier])];
+                    return [4 /*yield*/, database_1.default.query("\n        SELECT id FROM carriers WHERE name = $1;", [carrier])];
                 case 1:
                     carrierId = _a.sent();
                     carrier_id = carrierId.rows[0].id;
-                    return [4 /*yield*/, database_1["default"].query("INSERT INTO phones (phone_number, carrier, name, cpf, description, carrier_id)\n         VALUES ($1, $2, $3, $4, $5, $6)", [phone_number, carrier, name, cpf,
+                    return [4 /*yield*/, database_1.default.query("INSERT INTO phones (phone_number, carrier, name, cpf, description, carrier_id)\n         VALUES ($1, $2, $3, $4, $5, $6)", [phone_number, carrier, name, cpf,
                             description, carrier_id])];
                 case 2:
                     result = _a.sent();
@@ -89,13 +90,12 @@ function insertPhone(phone) {
         });
     });
 }
-exports.insertPhone = insertPhone;
 function getPhone(document) {
     return __awaiter(this, void 0, void 0, function () {
         var result, phones;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, database_1["default"].query("SELECT phone_number FROM phones WHERE cpf=$1", [document])];
+                case 0: return [4 /*yield*/, database_1.default.query("SELECT phone_number FROM phones WHERE cpf=$1", [document])];
                 case 1:
                     result = _a.sent();
                     phones = result.rows.map(function (e) { return e.phone_number; });
@@ -104,4 +104,3 @@ function getPhone(document) {
         });
     });
 }
-exports.getPhone = getPhone;

@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -38,8 +38,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.__esModule = true;
-exports.getPhoneByCpf = exports.createNewPhone = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createNewPhone = createNewPhone;
+exports.getPhoneByCpf = getPhoneByCpf;
 var phones_service_1 = require("../services/phones-service");
 var http_status_1 = __importDefault(require("http-status"));
 function createNewPhone(req, res) {
@@ -52,13 +53,12 @@ function createNewPhone(req, res) {
                     return [4 /*yield*/, (0, phones_service_1.createPhone)(phoneData)];
                 case 1:
                     _a.sent();
-                    res.sendStatus(http_status_1["default"].CREATED);
+                    res.sendStatus(http_status_1.default.CREATED);
                     return [2 /*return*/];
             }
         });
     });
 }
-exports.createNewPhone = createNewPhone;
 function getPhoneByCpf(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var document, result;
@@ -75,4 +75,3 @@ function getPhoneByCpf(req, res) {
         });
     });
 }
-exports.getPhoneByCpf = getPhoneByCpf;

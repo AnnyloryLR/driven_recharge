@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var phones_controller_1 = require("../controllers/phones-controller");
 var schema_middleware_1 = require("../middlewares/schema-middleware");
@@ -7,4 +7,4 @@ var phones_schema_1 = require("../schemas/phones-schema");
 var phonesRouter = (0, express_1.Router)();
 phonesRouter.post("/phones", (0, schema_middleware_1.schemaValidate)(phones_schema_1.phoneSchema), phones_controller_1.createNewPhone);
 phonesRouter.get("/phones/:document", phones_controller_1.getPhoneByCpf);
-exports["default"] = phonesRouter;
+exports.default = phonesRouter;
