@@ -1,4 +1,4 @@
-import { Id, Recharge, RechargeData } from "protocols/types";
+import { Id, Recharge, RechargeData, Recharges } from "protocols/types";
 import db from "../config/database";
 
 
@@ -29,7 +29,7 @@ export async function getRecharges(number:string){
 
     const phone_id = phoneId.rows[0].id;
 
-    const result =  await db.query(`
+    const result =  await db.query<Recharges>(`
         SELECT recharge FROM recharges WHERE phone_id = $1;`, [phone_id]);
 
     return result.rows;
