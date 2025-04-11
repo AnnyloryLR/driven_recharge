@@ -5,14 +5,14 @@ import { conflictError, conflictError2 } from "../errors/errors";
 
 export async function createPhone(phone: Phone){
     const {cpf} = phone;
-    const {phoneNumber} = phone;
+    const {phone_number} = phone;
 
-    const same = await sameNumber(phoneNumber);
+    const same = await sameNumber(phone_number);
     const limit = await phoneLimit(cpf);
 
-    if(same.rowCount > 0){throw conflictError(phoneNumber)}; 
+    if(same.rowCount > 0){throw conflictError(phone_number)}; 
 
-    if(limit.rowCount === 3){ throw conflictError2()};
+    if(limit.rowCount >= 3){ throw conflictError2()};
    
     const newPhone = await insertPhone(phone);   
     

@@ -71,7 +71,7 @@ function sameNumber(phoneNumber) {
 exports.sameNumber = sameNumber;
 function insertPhone(phone) {
     return __awaiter(this, void 0, void 0, function () {
-        var phoneNumber, carrier, name, cpf, description, carrierId, carrier_id, result;
+        var phoneNumber, carrier, name, cpf, description, carrierId, carrier_id;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -80,11 +80,7 @@ function insertPhone(phone) {
                 case 1:
                     carrierId = _a.sent();
                     carrier_id = carrierId.rows[0].id;
-                    return [4 /*yield*/, database_1["default"].query("INSERT INTO phones (phone_number, carrier, name, cpf, description, carrier_id)\n         VALUES ($1, $2, $3, $4, $5, $6)", [phoneNumber, carrier, name, cpf,
-                            description, carrier_id])];
-                case 2:
-                    result = _a.sent();
-                    return [2 /*return*/, result];
+                    return [2 /*return*/];
             }
         });
     });

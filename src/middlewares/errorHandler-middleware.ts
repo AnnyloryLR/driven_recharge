@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { Error } from "protocols/types";
 
 export default function errorHandler(error:Error, req: Request, res: Response, next: NextFunction): Promise<void>{
-    console.log(error);
 
     if(error.type === "conflict"){
         res.status(409).send(error.message)

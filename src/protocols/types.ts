@@ -4,7 +4,7 @@ export type Error = {
 };
 export type Phones = {
     id:number,
-    phoneNumber:string,
+    phone_number:string,
     carrier: string,
     name: string,
     cpf: string,
